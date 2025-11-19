@@ -95,7 +95,11 @@ SU_WAP> display acl
 The EG8145V5 uses SSH-RSA, which is deprecated:
 
 ```bash
+# For Indonesian ISP
 ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa Eproot@192.168.18.1
+
+# For other ISPs (replace username)
+ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa root@192.168.18.1
 ```
 
 **Why This Matters:**
@@ -405,25 +409,37 @@ SU_WAP> restore manufactory
 # Device will reboot and require reconfiguration
 ```
 
-## Indonesian ISP Specific Considerations
+## ISP-Specific Considerations
 
 ### Default Credentials
 
-**SSH/CLI:**
-- Username: `Eproot`
-- Password: ISP-provided
+**⚠️ IMPORTANT:** Default credentials vary by ISP. Each ISP configures devices differently.
 
-**Web Interface:**
-- Username: `Epadmin`
-- Password: ISP-provided
+#### Common Credential Variations
+
+| ISP/Region | SSH/CLI Username | Web GUI Username |
+|------------|------------------|------------------|
+| **Indonesian ISP** | `Eproot` | `Epadmin` |
+| Generic/Default | `root` | `admin` |
+| Some ISPs | `admin` | `admin` |
+| European ISPs | `telecomadmin` | `telecomadmin` |
+
+**For Indonesian ISP:**
+- **SSH/CLI:** Username: `Eproot`, Password: (ISP-provided)
+- **Web Interface:** Username: `Epadmin`, Password: (ISP-provided)
+
+**For Generic/Default:**
+- **SSH/CLI:** Username: `root`, Password: (ISP-provided)
+- **Web Interface:** Username: `admin`, Password: (ISP-provided)
 
 **Important:**
-- Change these immediately after first login
+- Change these immediately after first login regardless of ISP
 - ISP may have ability to reset via TR-069
+- Contact your ISP if you're unsure of default credentials
 
 ### TR-069 Management
 
-Indonesian ISPs typically use TR-069 for:
+Most ISPs (including Indonesian providers) use TR-069 for:
 - Remote configuration
 - Firmware updates
 - Service provisioning
@@ -450,8 +466,8 @@ Indonesian ISPs typically use TR-069 for:
 
 Use this checklist to verify your security posture:
 
-- [ ] Changed default SSH/CLI password (Eproot)
-- [ ] Changed default web interface password (Epadmin)
+- [ ] Changed default SSH/CLI password (Eproot for Indonesian ISP, root for others)
+- [ ] Changed default web interface password (Epadmin for Indonesian ISP, admin for others)
 - [ ] Disabled Telnet service
 - [ ] Enabled WPA2/WPA3 on WiFi
 - [ ] Set strong WiFi password (12+ characters)

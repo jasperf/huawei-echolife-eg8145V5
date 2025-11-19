@@ -7,23 +7,43 @@ This document covers the various methods to access and authenticate with the Hua
 The device supports SSH access with legacy key algorithms:
 
 ```bash
+# For Indonesian ISP
 ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa Eproot@192.168.18.1
+
+# For other ISPs (replace username as needed)
+ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa root@192.168.18.1
+ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa admin@192.168.18.1
 ```
 
-### Default Credentials (Indonesian ISP)
+### Default Credentials (ISP-Specific)
 
-**SSH/CLI Access:**
-- Username: `Eproot`
-- Password: (ISP-provided default - should be changed)
+**⚠️ IMPORTANT:** Default usernames vary by ISP. Each ISP configures their devices differently.
 
-**Web Interface:**
-- Username: `Epadmin`
-- Password: (ISP-provided default - should be changed)
+#### Common Credential Variations
 
-**Note:** Different ISPs may use different default usernames. Common variations include:
-- `root` (generic)
-- `Eproot` (Indonesian ISP)
-- ISP-specific usernames
+| ISP/Region | SSH/CLI Username | Web GUI Username | Notes |
+|------------|------------------|------------------|-------|
+| **Indonesian ISP** | `Eproot` | `Epadmin` | Verified - starts with "Ep" prefix |
+| Generic/Default | `root` | `admin` | Most common default |
+| Some ISPs | `admin` | `admin` | Alternative configuration |
+| telecomadmin | `telecomadmin` | `telecomadmin` | Some European ISPs |
+| User-created | `user` | `user` | Rare, some ISPs allow custom |
+
+**How to Find Your Credentials:**
+1. Check documentation from your ISP
+2. Look for sticker on the device (may show username)
+3. Contact ISP technical support
+4. Try common defaults: `root`, `admin`, `Eproot`
+
+**For Indonesian ISP (Example):**
+- **SSH/CLI:** Username: `Eproot`, Password: (ISP-provided)
+- **Web Interface:** Username: `Epadmin`, Password: (ISP-provided)
+
+**For Generic/Default:**
+- **SSH/CLI:** Username: `root`, Password: (ISP-provided)
+- **Web Interface:** Username: `admin`, Password: (ISP-provided)
+
+**Security Note:** Regardless of ISP, always change default passwords immediately!
 
 ### SSH Configuration Notes
 
@@ -42,9 +62,13 @@ The device uses older SSH key algorithms (SSH-RSA), which are considered legacy:
 
 ### Initial Login Workflow
 
-1. Connect via SSH:
+1. Connect via SSH (replace username with your ISP's default):
    ```bash
+   # Indonesian ISP
    ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa Eproot@192.168.18.1
+
+   # Generic/Other ISPs
+   ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa root@192.168.18.1
    ```
 
 2. You'll be in the WAP shell (limited access):
@@ -62,7 +86,7 @@ The device uses older SSH key algorithms (SSH-RSA), which are considered legacy:
    SU_WAP>
    ```
 
-5. Change the default password (recommended):
+5. Change the default password (CRITICAL):
    ```
    SU_WAP> set userpasswd
    ```
@@ -80,9 +104,21 @@ Access the web management interface at:
 http://192.168.18.1
 ```
 
-**Default Credentials:**
-- Username: `Epadmin` (Indonesian ISP)
-- Password: (ISP-provided)
+**Default Credentials (ISP-Specific):**
+
+| ISP/Region | Username | Password |
+|------------|----------|----------|
+| Indonesian ISP | `Epadmin` | (ISP-provided) |
+| Generic/Default | `admin` | (ISP-provided) |
+| Alternative | `admin` | `admin` |
+| Some ISPs | `telecomadmin` | (ISP-provided) |
+
+**If Unsure:** Try these usernames in order:
+1. Check ISP documentation first
+2. `Epadmin` (Indonesian ISP)
+3. `admin` (most common)
+4. `root`
+5. `telecomadmin`
 
 **Features:**
 - Graphical interface for configuration
@@ -108,6 +144,7 @@ Telnet may be available but is **not recommended** due to security concerns:
 
 ```bash
 telnet 192.168.18.1
+# Login with same credentials as SSH (Eproot for Indonesian ISP, root for others)
 ```
 
 **Recommendation:** Always prefer SSH over Telnet. If Telnet is enabled and not needed, disable it:
