@@ -29,7 +29,8 @@ SU_WAP> display arp
 Example output:
 ```
 Hostname          SSID    Client Type    IP Address      MAC Address         Status
-DESKTOP-ABC123    SSID5   MSFT 5.0       192.168.18.19   48:e7:da:e7:95:61   Online
+LAPTOP-HOME       SSID5   MSFT 5.0       192.168.18.15   aa:bb:cc:11:22:33   Online
+PHONE-GUEST       SSID1   Android        192.168.18.20   dd:ee:ff:44:55:66   Online
 ```
 
 ### View Current MAC Filters
@@ -167,7 +168,7 @@ Use an always-on device (Raspberry Pi, NAS, home server) to automate the process
 ROUTER_IP="192.168.18.1"
 USERNAME="Eproot"  # Change if different ISP
 ROUTER_PASS="your_router_password"
-MAC_TO_BLOCK="48:e7:da:e7:95:61"  # Replace with actual MAC
+MAC_TO_BLOCK="aa:bb:cc:dd:ee:ff"  # Replace with actual MAC
 
 sshpass -p "${ROUTER_PASS}" ssh -o StrictHostKeyChecking=no \
   -o HostKeyAlgorithms=+ssh-rsa \
@@ -190,7 +191,7 @@ EOF
 ROUTER_IP="192.168.18.1"
 USERNAME="Eproot"
 ROUTER_PASS="your_router_password"
-MAC_TO_UNBLOCK="48:e7:da:e7:95:61"
+MAC_TO_UNBLOCK="aa:bb:cc:dd:ee:ff"
 
 sshpass -p "${ROUTER_PASS}" ssh -o StrictHostKeyChecking=no \
   -o HostKeyAlgorithms=+ssh-rsa \
