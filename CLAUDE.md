@@ -14,6 +14,7 @@ This is a documentation repository for managing the Huawei EchoLife EG8145V5 Opt
 └── docs/
     ├── access-methods.md       # SSH, web, telnet access and authentication
     ├── command-reference.md    # Comprehensive CLI command reference
+    ├── MANAGEMENT.md           # Device management, access control, and scheduling
     ├── security.md             # Security hardening and best practices
     └── troubleshooting.md      # Common issues and solutions
 ```
@@ -62,6 +63,7 @@ Since this is a documentation repository, typical tasks involve:
 3. **Organizing Content:**
    - Access and authentication → [docs/access-methods.md](docs/access-methods.md)
    - CLI commands and reference → [docs/command-reference.md](docs/command-reference.md)
+   - Device management and access control → [docs/MANAGEMENT.md](docs/MANAGEMENT.md)
    - Security topics → [docs/security.md](docs/security.md)
    - Troubleshooting → [docs/troubleshooting.md](docs/troubleshooting.md)
    - Quick reference → [README.md](README.md)

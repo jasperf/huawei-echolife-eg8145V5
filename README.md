@@ -81,6 +81,7 @@ Detailed documentation is organized in the [`docs/`](docs/) directory:
 
 - **[Access Methods](docs/access-methods.md)** - SSH, web interface, authentication, and access modes
 - **[Command Reference](docs/command-reference.md)** - Comprehensive CLI command guide organized by category
+- **[Device Management](docs/MANAGEMENT.md)** - Device access control, MAC filtering, and scheduling options
 - **[Security Guide](docs/security.md)** - Security best practices, hardening, and authentication
 - **[Troubleshooting](docs/troubleshooting.md)** - Common issues and solutions
 
@@ -278,6 +279,7 @@ Unsaved changes will be lost on reboot!
 - [Official Huawei Support](https://support.huawei.com/enterprise/en/optical-access/echolife-eg8145v5-pid-23112449)
 - [Access Methods Guide](docs/access-methods.md)
 - [Command Reference](docs/command-reference.md)
+- [Device Management Guide](docs/MANAGEMENT.md)
 - [Security Guide](docs/security.md)
 - [Troubleshooting Guide](docs/troubleshooting.md)
 
