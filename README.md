@@ -20,32 +20,41 @@ The Huawei EchoLife EG8145V5 is a Gigabit-capable Passive Optical Network (GPON)
 
 **SSH Access (Recommended):**
 ```bash
+# For Indonesian ISP
 ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa Eproot@192.168.18.1
+
+# For other ISPs, username may vary (root, admin, etc.)
+ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa <username>@192.168.18.1
 ```
 
 **Web Interface:**
 ```
 http://192.168.18.1
-Username: Epadmin
+Username: (ISP-specific - see below)
 Password: (ISP-provided)
 ```
 
-### Indonesian ISP Default Credentials
+### Default Credentials (ISP-Specific)
 
-**SSH/CLI:**
-- Username: `Eproot`
-- Password: (ISP-provided default)
+**⚠️ IMPORTANT:** Credentials vary by ISP. Common variations:
 
-**Web Interface:**
-- Username: `Epadmin`
-- Password: (ISP-provided default)
+| ISP Region | SSH/CLI Username | Web GUI Username | Notes |
+|------------|------------------|------------------|-------|
+| Indonesian ISP | `Eproot` | `Epadmin` | Verified configuration |
+| Generic/Other | `root` | `admin` | Common default |
+| Some ISPs | `admin` | `admin` | Alternative default |
+| Your ISP | `?` | `?` | Check ISP documentation |
 
-**⚠️ IMPORTANT:** Change default passwords immediately after first login!
+**For Indonesian ISP (Example):**
+- **SSH/CLI:** Username: `Eproot`, Password: (ISP-provided)
+- **Web GUI:** Username: `Epadmin`, Password: (ISP-provided)
+
+**⚠️ CRITICAL:** Change default passwords immediately after first login!
 
 ### Basic Command Flow
 
 ```bash
-# Connect via SSH
+# Connect via SSH (replace 'Eproot' with your ISP's username)
 ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa Eproot@192.168.18.1
 
 # Elevate to super user mode
@@ -54,7 +63,7 @@ WAP> su
 # You're now in administrative mode
 SU_WAP>
 
-# Change password (recommended)
+# Change password (CRITICAL - do this first!)
 SU_WAP> set userpasswd
 
 # View device information
@@ -296,5 +305,6 @@ This documentation is provided as-is for community use.
 ---
 
 **Last Updated:** November 2025
-**ISP Context:** Indonesian ISP (Eproot/Epadmin credentials)
+**Primary ISP Context:** Indonesian ISP (Eproot/Epadmin credentials)
+**Note:** Credentials vary by ISP - see documentation for details
 **Default Gateway:** 192.168.18.1
